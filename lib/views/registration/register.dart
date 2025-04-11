@@ -1,5 +1,7 @@
 import 'package:fashion_app/config/constants/app_color.dart';
+import 'package:fashion_app/config/constants/app_constants.dart';
 import 'package:fashion_app/config/constants/styles.dart';
+import 'package:fashion_app/views/registration/widgets/full_name.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
@@ -22,19 +24,27 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColor.lightColor,
-      body: ListView(
-        children: [
-          Text(
-            "Create Account",
-            textAlign: TextAlign.center,
-          ),
-          Form(
-            child: Column())
-        ],
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColor.whiteColor,
+        body: ListView(
+          padding: EdgeInsets.all(AppConstants.screenPadding),
+          children: [
+            Text(
+              "Create Account",
+              textAlign: TextAlign.center,
+              style: Styles.headlineLarge,
+            ),
+            Form(
+                key: formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [FullName(nameFocusNode: nameFocusNode)],
+                ))
+          ],
+        ),
       ),
     );
   }
 }
-
