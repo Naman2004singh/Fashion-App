@@ -5,6 +5,7 @@ import 'package:fashion_app/views/registration/widgets/email.dart';
 import 'package:fashion_app/views/registration/widgets/full_name.dart';
 import 'package:fashion_app/views/registration/widgets/gender.dart';
 import 'package:fashion_app/views/registration/widgets/phone_no.dart';
+import 'package:fashion_app/views/registration/widgets/state_country_city.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
@@ -19,9 +20,9 @@ class _RegisterState extends State<Register> {
   final emailFocusNode = FocusNode();
   final phoneFocusNode = FocusNode();
   final genderFocusNode = FocusNode();
-  final countryFocusNode = FocusNode();
-  final stateFocusNode = FocusNode();
-  final cityFocusNode = FocusNode();
+  final TextEditingController stateController = TextEditingController();
+  final TextEditingController countryController = TextEditingController();
+  final TextEditingController cityController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
 
@@ -47,7 +48,11 @@ class _RegisterState extends State<Register> {
                     FullName(nameFocusNode: nameFocusNode),
                     Email(emailFocusNode: emailFocusNode),
                     PhoneNo(phoneFocusNode: phoneFocusNode),
-                    Gender(genderFocusNode: genderFocusNode)
+                    Gender(genderFocusNode: genderFocusNode),
+                    StateCountryCity(
+                        stateController: stateController,
+                        cityController: cityController,
+                        countryController: countryController)
                   ],
                 ))
           ],
