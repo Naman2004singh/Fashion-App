@@ -1,7 +1,9 @@
+import 'package:fashion_app/bloc/registration/register_bloc.dart';
 import 'package:fashion_app/config/constants/app_color.dart';
 import 'package:fashion_app/config/constants/app_constants.dart';
 import 'package:fashion_app/config/constants/strings.dart';
 import 'package:fashion_app/config/constants/styles.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +24,37 @@ class _RegisterState extends State<Register> {
   final TextEditingController cityController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+    stateController.addListener(_onStateChanged);
+    countryController.addListener(_onCountryChanged);
+    cityController.addListener(_onCityChanged);
+  }
+
+  @override
+  void dispose() {
+    countryController.removeListener(_onCountryChanged);
+    cityController.removeListener(_onCityChanged);
+    stateController.removeListener(_onStateChanged);
+    super.dispose();
+  }
+
+  void _onCountryChanged() {
+    BlocProvider.of<RegisterBloc>(context)
+        .add(CountryChanged(country: countryController.text));
+  }
+
+  void _onStateChanged(){
+    BlocProvider.of<RegisterBloc>(context)
+        .add(StateChanged(state: stateController.text));
+  }
+
+  void _onCityChanged(){
+    BlocProvider.of<RegisterBloc>(context)
+        .add(CityChanged(city: cityController.text));
+  }
 
   @override
   Widget build(BuildContext context) {
