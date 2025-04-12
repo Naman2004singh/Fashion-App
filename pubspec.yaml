@@ -55,4 +55,7 @@ flutter:
     - family: Poppins
       fonts:
         - asset: assets/fonts/poppins.ttf
+    - family: Helvetica
+      fonts: 
+        - asset: assets/fonts/Helvetica.ttf
 

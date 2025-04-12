@@ -13,4 +13,10 @@ class Styles {
       fontSize: 16.0,
       fontWeight: FontWeight.w500,
       color: AppColor.blackColor);
+
+  static TextStyle bodySmall = TextStyle(
+      fontFamily: "Helvetica",
+      fontSize: 16.0,
+      fontWeight: FontWeight.w500,
+      color: AppColor.blackColor);
 }

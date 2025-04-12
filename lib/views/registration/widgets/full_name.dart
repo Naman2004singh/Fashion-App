@@ -15,7 +15,7 @@ class FullName extends StatelessWidget {
       keyboardType: TextInputType.name,
       focusNode: nameFocusNode,
       decoration: InputDecoration(
-        hintText: "Enter your Name",
+        hintText: "Enter your Full Name",
         enabled: true,
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(textFieldBoderRadius),

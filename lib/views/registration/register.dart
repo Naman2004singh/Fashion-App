@@ -1,7 +1,10 @@
 import 'package:fashion_app/config/constants/app_color.dart';
 import 'package:fashion_app/config/constants/app_constants.dart';
 import 'package:fashion_app/config/constants/styles.dart';
+import 'package:fashion_app/views/registration/widgets/email.dart';
 import 'package:fashion_app/views/registration/widgets/full_name.dart';
+import 'package:fashion_app/views/registration/widgets/gender.dart';
+import 'package:fashion_app/views/registration/widgets/phone_no.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
@@ -28,7 +31,7 @@ class _RegisterState extends State<Register> {
       child: Scaffold(
         backgroundColor: AppColor.whiteColor,
         body: ListView(
-          padding: EdgeInsets.all(AppConstants.screenPadding),
+          padding: EdgeInsets.all(AppConstants.largePadding),
           children: [
             Text(
               "Create Account",
@@ -40,7 +43,12 @@ class _RegisterState extends State<Register> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [FullName(nameFocusNode: nameFocusNode)],
+                  children: [
+                    FullName(nameFocusNode: nameFocusNode),
+                    Email(emailFocusNode: emailFocusNode),
+                    PhoneNo(phoneFocusNode: phoneFocusNode),
+                    Gender(genderFocusNode: genderFocusNode)
+                  ],
                 ))
           ],
         ),
