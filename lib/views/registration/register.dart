@@ -2,12 +2,7 @@ import 'package:fashion_app/config/constants/app_color.dart';
 import 'package:fashion_app/config/constants/app_constants.dart';
 import 'package:fashion_app/config/constants/strings.dart';
 import 'package:fashion_app/config/constants/styles.dart';
-import 'package:fashion_app/views/registration/widgets/email.dart';
-import 'package:fashion_app/views/registration/widgets/full_name.dart';
-import 'package:fashion_app/views/registration/widgets/gender.dart';
-import 'package:fashion_app/views/registration/widgets/phone_no.dart';
-import 'package:fashion_app/views/registration/widgets/register_button.dart';
-import 'package:fashion_app/views/registration/widgets/state_country_city.dart';
+import 'widgets.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
@@ -48,9 +43,6 @@ class _RegisterState extends State<Register> {
               textAlign: TextAlign.center,
               style: Styles.headlineLarge,
             ),
-            // SizedBox(
-            //   height: sizedboxMedium,
-            // ),
             Text(
               Strings.registerScreenText,
               textAlign: TextAlign.center,
