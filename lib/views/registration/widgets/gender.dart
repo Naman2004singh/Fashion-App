@@ -1,5 +1,5 @@
 import 'package:fashion_app/config/constants/app_color.dart';
-import 'package:fashion_app/utils/input_decoration.dart';
+import 'common_exports.dart';
 import 'package:flutter/material.dart';
 
 class Gender extends StatelessWidget {
@@ -15,16 +15,31 @@ class Gender extends StatelessWidget {
       'Female',
       'Other',
     ];
-  
-    return DropdownButtonFormField<String>(
-      value: selectGender,
-      focusNode: genderFocusNode,
-      items: genderOptions
-          .map((e) => DropdownMenuItem(value: e, child: Text(e)))
-          .toList(),
-      onChanged: (value) {},
-      dropdownColor: AppColor.lightColor,
-      decoration: CustomInputDecoration.getDecoration(hintText: "Select your Gender")
+
+    return BlocBuilder<RegisterBloc, RegisterStates>(
+      buildWhen: (previous, current) => previous.gender != current.gender,
+      builder: (context, state) {
+        return DropdownButtonFormField<String>(
+            value: selectGender,
+            focusNode: genderFocusNode,
+            items: genderOptions
+                .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+                .toList(),
+            onChanged: (value) {
+              if (value != null) {
+                context.read<RegisterBloc>().add(GenderChanged(gender: value));
+              }
+            },
+            validator: (value) {
+              if (value!.isEmpty) {
+                return "Gender is empty";
+              }
+              return null;
+            },
+            dropdownColor: AppColor.lightColor,
+            decoration: CustomInputDecoration.getDecoration(
+                hintText: "Select your Gender"));
+      },
     );
   }
 }
